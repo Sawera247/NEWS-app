@@ -22,8 +22,14 @@ function bindData(articles){
 
     cardsContainer.innerHTML = '';
 
+    const seen = new Set();
+
     articles.forEach(article => {
-        if(!article.image) return
+        if(!article.image) return;
+
+        if (seen.has(article.url)) return;
+        seen.add(article.url);
+
         const testImg = new Image();
         testImg.src = article.image;
 
